@@ -4,3 +4,5 @@ interface SimpleCharacter {
     image: string;
     name_kanji: string;
 }
+
+export default SimpleCharacter;
