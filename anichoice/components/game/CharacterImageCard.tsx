@@ -1,8 +1,8 @@
-'use-client';
+'use client';
 import Image from "next/image";
 import base_get_random_characters from "@/utils/basic_get_random_characters";
 
-export default async function CharacterImageCard({src} : {src: string}){
+export default function CharacterImageCard({src} : {src: string}){
     // const characters = await base_get_random_characters();
     // console.log(characters);
     // console.log(characters[0].image);

@@ -24,7 +24,8 @@ export default async function base_get_random_characters() {
                 image: character.data.images.jpg.image_url,
                 name_kanji: character.data.name_kanji
             };
-            if (!characters_array.find(c => c.id === new_character.id)) {
+            if (!characters_array.find(c => c.id === new_character.id) 
+                && !new_character.image.includes("apple-touch-icon")) {
                 characters_array.push(new_character);
                 slots_filled++;
                 if (characters_array.length >= 20) break;
