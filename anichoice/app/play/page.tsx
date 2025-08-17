@@ -14,8 +14,8 @@ export default async function PlayPage() {
     }
 
     return (
-        <div>
+        <main className="flex flex-col items-center justify-center min-w-screen min-h-screen">
             {body}
-        </div>
+        </main>
     );
 }
