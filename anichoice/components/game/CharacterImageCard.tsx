@@ -2,8 +2,9 @@
 import Image from "next/image";
 import base_get_random_characters from "@/utils/basic_get_random_characters";
 import { useEffect, useRef, useState } from "react";
+import GameSettings from "@/data_types/game_settings";
 
-export default function CharacterImageCard({src} : {src: string}){
+export default function CharacterImageCard({gameSettings, src} : {gameSettings: GameSettings, src: string}){
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(true);
 
@@ -19,28 +20,29 @@ export default function CharacterImageCard({src} : {src: string}){
         const parent = canvas.parentElement;
         if (!parent) return;
 
-        // Set canvas resolution to match container size
         canvas.width = parent.clientWidth;
         canvas.height = parent.clientHeight;
 
         const img = new window.Image();
         img.src = src;
         img.onload = () => {
-            // Pixelation settings
-            const pixelSize = 16; // Change for more/less pixelation
+            const pixelSize = 16;
             const w = canvas.width;
             const h = canvas.height;
-
-            // Draw image at low resolution
-            // ctx.clearRect(0, 0, w, h);
-            ctx.imageSmoothingEnabled = false;
-            // ctx.drawImage(img, 0, 0, w, h);
-            ctx.drawImage(img, 0, 0, pixelSize, pixelSize);
-            // Scale up to fill canvas
-            ctx.drawImage(canvas, 0, 0, pixelSize, pixelSize, 0, 0, w, h);
+            
+            ctx.clearRect(0, 0, w, h);
+            console.log(gameSettings.pixelate)
+            if (gameSettings.pixelate) {
+                ctx.imageSmoothingEnabled = false;
+                ctx.drawImage(img, 0, 0, pixelSize, pixelSize);
+                ctx.drawImage(canvas, 0, 0, pixelSize, pixelSize, 0, 0, w, h);
+            } else {
+                ctx.imageSmoothingEnabled = true;
+                ctx.drawImage(img, 0, 0, w, h);
+            }
             setIsLoadingImage(false);
         };
-    }, [src]);
+    }, [src, gameSettings]);
     
     
     return (
