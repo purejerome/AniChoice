@@ -1,0 +1,4 @@
+const PIXEL_FACTOR = 40;
+const ZOOM_FACTOR = 4;
+
+export { PIXEL_FACTOR, ZOOM_FACTOR }
