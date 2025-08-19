@@ -73,13 +73,12 @@ export default function CharacterImageCard({gameSettings, src} : {gameSettings: 
         }, 1000);
     }
     
-    
     return (
         <div 
             className={`
-                w-[65vw]
-                md:w-[35vw]
-                xl:w-[20vw]
+                ${gameSettings.mini ? 'w-[10vw]' : 'w-[65vw]'}
+                ${gameSettings.mini ? 'md:w-[4vw]' : 'md:w-[35vw]'}
+                ${gameSettings.mini ? 'xl:w-[3vw]' : 'xl:w-[20vw]'}
                 aspect-[2/3] 
                 max-w-[900px] max-h-[800px]
                 rounded-xl overflow-hidden
@@ -87,11 +86,14 @@ export default function CharacterImageCard({gameSettings, src} : {gameSettings: 
                 relative
                 ${gameSettings.spin ? 'animate-spin' : ''}
             `}
-            // style={{...style}}
         >
             <canvas 
                 ref={canvasRef} 
-                className={`w-full h-full object-cover ${gameSettings.grayscale ? 'grayscale' : ''}`}
+                className={`
+                    w-full h-full object-cover 
+                    ${gameSettings.grayscale ? 'grayscale' : ''}
+                    ${gameSettings.blur ? 'filter blur-sm' : ''}
+                `}
                 style={{display: isLoadingImage ? 'none' : 'block', opacity: cardVisible ? 1 : 0}}
             >
             </canvas>

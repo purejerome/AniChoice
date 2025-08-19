@@ -14,7 +14,9 @@ export default function GameBoard({characters} : {characters: SimpleCharacter[]}
         zoom: false,
         grayscale: false,
         spin: false,
-        blink_and_miss: true,
+        blink_and_miss: false,
+        blur: false,
+        mini: false
     };
 
     return (
@@ -23,7 +25,9 @@ export default function GameBoard({characters} : {characters: SimpleCharacter[]}
                 gameSettings={testGameSettings} 
                 src={characters[current_character].image}
             />
-            <div className="flex items-center w-full">
+            <div className="flex items-center w-[65vw]
+                md:w-[35vw]
+                xl:w-[20vw]">
                 <button onClick={() => setCurrentCharacter((current_character + 1) % characters.length)}>Next</button>
                 <button onClick={() => console.log(characters[current_character])}>Info</button>
             </div>

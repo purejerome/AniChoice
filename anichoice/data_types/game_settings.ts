@@ -4,6 +4,8 @@ interface GameSettings {
     grayscale: boolean;
     spin: boolean;
     blink_and_miss: boolean;
+    blur: boolean;
+    mini: boolean;
     // Add more game settings as needed
 }
 

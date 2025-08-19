@@ -9,7 +9,6 @@ export default async function PlayPage() {
     try {
         const characters: SimpleCharacter[] = await base_get_random_characters();
         body = <GameBoard characters={characters} />;
-        console.log(characters.length);
     } catch {
         body = <p>Error loading characters.</p>;
     }
