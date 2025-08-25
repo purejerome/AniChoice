@@ -2,20 +2,13 @@ import CheckBoxSection from "@/components/checkboxes/CheckBoxSection";
 import Link from "next/link";
 
 export default function Home() {
-  
   return (
     <main>
-      hello
-      {/* <TestImage /> */}
-      <Link href="/play">Go to Play Page</Link>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="text-4xl text-[#ffb0f4] font-bold">Welcome to AniChoice</h1>
+        <Link href="/play">Go to Play Page</Link>
+      </div>
       <CheckBoxSection />
-      {/* <Image
-        src="https://picsum.photos/200/300"
-        alt="Test image"
-        unoptimized
-        fill
-        objectFit="contain"
-      /> */}
     </main>
   );
 }

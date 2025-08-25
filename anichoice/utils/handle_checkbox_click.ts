@@ -1,19 +1,20 @@
 import { GameSettingId } from "@/data_types/check_box_ids";
+import GameSettings from "@/data_types/game_settings";
+import { defaultGameSettings } from "@/data_types/game_settings";
 
-export default function handleCheckBoxClick(gameSettingID: GameSettingId){
-        const checkbox = document.getElementById(gameSettingID) as HTMLInputElement | null;
+export default function handleCheckBoxClick(gameSettingID: GameSettingId, checked: boolean){
         const gameSettingsSession = sessionStorage.getItem("gameSettings");
-        let gameSettings: { [key: string]: boolean } = {};
+        let gameSettings: GameSettings = defaultGameSettings;
         try {
-            gameSettings = JSON.parse(gameSettingsSession ?? "{}");
+            gameSettings = JSON.parse(gameSettingsSession ?? JSON.stringify(defaultGameSettings));
         } catch {
-            gameSettings = {};
+            gameSettings = defaultGameSettings;
         }
         
-        if (checkbox?.checked){
-            gameSettings[gameSettingID] = true;
+        if (checked){
+            gameSettings[gameSettingID as keyof GameSettings] = true;
         } else {
-            gameSettings[gameSettingID] = false;
+            gameSettings[gameSettingID as keyof GameSettings] = false;
         }
         
         sessionStorage.setItem("gameSettings", JSON.stringify(gameSettings));
