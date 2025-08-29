@@ -5,6 +5,7 @@ import GameBoard from "@/components/game/GameBoard";
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import GameSettings from "@/data_types/game_settings";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function PlayPage() {
     const [characters, setCharacters] = useState<SimpleCharacter[] | null>(null);
@@ -54,7 +55,7 @@ export default function PlayPage() {
 
     let body = null;
     if (loading){
-        body = <p>Loading...</p>
+        body = <LoadingPage />
     } else {
         if (characters) {
             const rawSettings = sessionStorage.getItem('gameSettings');

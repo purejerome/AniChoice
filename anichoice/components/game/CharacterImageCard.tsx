@@ -148,7 +148,13 @@ export default function CharacterImageCard({gameSettings, src, guessState} : {ga
             `}
             style={{display: isLoadingImage ? 'flex' : 'none', zIndex: 2}}
             >
-                hello
+                <Image
+                    src="/gifs/jumping_gojo_t.gif"
+                    alt="Gojo loading gif"
+                    width={0}
+                    height={0}
+                    className="w-50 h-auto"
+                />
             </div>
         </div>
     )
